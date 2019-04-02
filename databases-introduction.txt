@@ -1,0 +1,71 @@
+1) What data types do each of these values represent?
+
+"A Clockwork Orange" = String
+42 = integer
+09/02/1945 = date
+98.7 = float
+$15.99 = float
+
+2) Explain when a database would be used. Explain when a text file would be used.
+
+A database would be used when sending data that can be easily sent through servers, when data may need to be revised, and when saving large amounts of information. An example of this is sending employee data to an external payroll company.
+
+Texts are used when the data needs to be read by humans. The files documents and the information located within the files may not be as easy to access due to the format. However, if the data is minimal, text format is fine.
+
+3) Describe one difference between SQL and other programming languages.
+
+SQL is declarative. This means SQL is only concerned with getting a solution the problem. SQL is not interested in how the solution is found. Other programming languages use algorithms and are interested in the procedure, as well as the solution.
+
+4) In your own words, explain how the pieces of a database system fit together at a high level.
+
+Database information is stored in a table-like structure with the use of binary numbers(1,0). The table is an object. The columns and rows contain cells that hold the keys and values. All of the information is structured in a unique way so that the user can make queries for information. The database sends information in formats such as json files. When an API request is made from one server to another, the database send the file.
+
+5) Explain the meaning of table, row, column, and value.
+
+A table is the object containing the tables, rows, values, and cells. It is made up of rows and columns. The rows are horizontal and the columns are vertical. Depending on where the value is placed, it has a particular meaning. For example, a value placed at the top of a table most likely represents the heading of the column.
+
+6) List three data types that can be used in a table.
+
+Strings
+Integers
+Floats
+
+7) Given this payments table, provide an English description of the following queries and include their results:
+
+     SELECT date, amount
+     FROM payments;
+
+     SELECT amount
+     FROM payments
+     WHERE amount > 500;
+
+     SELECT *
+     FROM payments
+     WHERE payee = 'Mega Foods';
+
+     ANSWERS:
+     What are the dates and amounts from the payments table?
+
+     What are the amounts from the payments table that are greater than $500?
+
+     I am looking for a specific payee from the payments table that has the exact name of "Mega Foods".
+
+8) Given this users table, write SQL queries using the following criteria and include the output:
+
+The email and sign-up date for the user named DeAndre Data.
+The user ID for the user with email 'aleesia.algorithm@uw.edu'.
+All the columns for the user ID equal to 4.
+
+ANSWERS:
+
+SELECT email, sign-up date
+FROM payments
+WHERE user = "DeAndre Data";
+
+SELECT userId
+FROM payments
+WHERE email = "aleesia.algorithm@uw.edu";
+
+SELECT *
+FROM users
+WHERE userId = 4;

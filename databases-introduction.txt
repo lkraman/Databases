@@ -4,7 +4,7 @@
 42 = integer
 09/02/1945 = date
 98.7 = float
-$15.99 = float
+$15.99 = money
 
 2) Explain when a database would be used. Explain when a text file would be used.
 
@@ -67,5 +67,5 @@ FROM payments
 WHERE email = "aleesia.algorithm@uw.edu";
 
 SELECT *
-FROM users
+FROM payments
 WHERE userId = 4;

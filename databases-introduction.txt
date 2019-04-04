@@ -32,6 +32,7 @@ Floats
 
 7) Given this payments table, provide an English description of the following queries and include their results:
 
+
      SELECT date, amount
      FROM payments;
 
@@ -45,10 +46,13 @@ Floats
 
      ANSWERS:
      What are the dates and amounts from the payments table?
+     The dates are May 1, 10, 15, 23 of 2016. The corresponding payments are $1500, $37, $124.93, and $54.72.
 
      What are the amounts from the payments table that are greater than $500?
+     The amount greater than $500 is $1500.
 
      I am looking for a specific payee from the payments table that has the exact name of "Mega Foods".
+     Mega Foods is returned.
 
 8) Given this users table, write SQL queries using the following criteria and include the output:
 
@@ -59,13 +63,19 @@ All the columns for the user ID equal to 4.
 ANSWERS:
 
 SELECT email, sign-up date
-FROM payments
+FROM users
 WHERE user = "DeAndre Data";
 
+returns datad@comcast.net	2008-01-20
+
 SELECT userId
-FROM payments
+FROM users
 WHERE email = "aleesia.algorithm@uw.edu";
 
+returns 1
+
 SELECT *
-FROM payments
+FROM users
 WHERE userId = 4;
+
+returns Brandy Boolean	bboolean@nasa.gov	1999-10-15

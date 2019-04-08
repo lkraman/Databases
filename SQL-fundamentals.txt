@@ -1,0 +1,173 @@
+1)List the commands for adding, updating, and deleting data.
+
+    Adding command:
+    INSERT INTO
+    ALTER TABLE
+    ADD COLUMN
+
+    Update command:
+    UPDATE
+    ALTER TABLE
+
+    delete command:
+    DELETE
+    DROP TABLE
+
+2)Explain the structure for each type of command.
+
+Adding command:
+INSERT INTO (table name) VALUES ();
+CREATE TABLE products (
+      column name data type,
+      column name data type,
+      column name data type,
+  );
+
+Update command:
+UPDATE (table name) SET () WHERE ();
+ALTER TABLE (table name)r ADD COLUMN (column name data type);
+
+delete command:
+DELETE FROM (table name) WHERE ();
+ALTER TABLE (table name) DROP COLUMN ();
+
+3)What are some of the data types that can be used in tables? Give a real-world example of each type.
+
+Int can be used when an int is needed in a table. An example of the population in a given country.
+Char can be used when a letter is used to enter a student's grade.
+Money can be used to enter the amount an employee earned during a given period.
+
+
+
+
+4) Decide how to create a new table to hold a list of people invited to a wedding dinner. The table needs to have first and last names, whether they sent in their RSVP, the number of guests they are bringing, and the number of meals (1 for adults and 1/2 for children).
+
+4a) Which data type would you use to store each of the following pieces of information?
+  First and last name. -> CHAR(n)
+  Whether they sent in their RSVP.-> bool
+  Number of guests. -> INT
+  Number of meals.->  float(n)
+
+4b) Write a command that creates the table to track the wedding dinner.
+
+CREATE TABLE wedding_dinner (
+    last_name text,
+    first_name text,
+    RSVP bool,
+    guests int,
+    meals float(),
+);
+4c) Write a command that adds a column to track whether the guest sent a thank you card.
+
+ALTER TABLE wedding_dinner ADD COLUMN thank_you_card boolean SET DEFAULT false;
+
+4d) You have decided to move the data about the meals to another table, so write a command to remove the column storing the number meals from the wedding table.
+
+ALTER TABLE wedding_dinner DROP COLUMN meals;
+
+4e) The guests will need a place to sit at the reception, so write a command that adds a column for table number.
+
+ALTER TABLE wedding_dinner ADD COLUMN table_number int;
+
+4f) The wedding is over and we do not need to keep this information, so write a command that deletes the table numbers from the database.
+
+ALTER TABLE wedding_dinner DROP COLUMN table_number;
+
+
+
+
+5a) Write a command to create a new table to hold the books in a library with the columns isbn, title, author, genre, publishing date, number of copies, and available copies.
+
+CREATE TABLE books (
+      isbn varchar(10),
+      title char,
+      author char,
+      genre char,
+      pub_date date,
+      num_copies int,
+      avail_copies int,
+  );
+
+
+5b) Find three books and add their information to the table.
+//I did not use a calculation to determine the isbn.
+
+INSERT INTO books VALUES (0136067256, “How to Bathe a Cat”, “Catta, Persephone”, “animals”, 04/15/1972, 2, 2);
+
+INSERT INTO books VALUES (0136091814, “You Can Read Your Dog's Mind”, “Cayce, E”, “how to”, 06/15/1999, 2, 2);
+
+INSERT INTO books VALUES (0137892654, “The Gift of Intuition, “Small, Melody”, “psychology”, 03/02/2012, 1, 0);
+
+
+5c)Someone has just checked out one of the books. Change the number of available copies to 1 fewer.
+
+UPDATE books SET avail_copies=1 WHERE isbn=0136091814;
+
+5d) Now one of the books has been added to the banned books list. Remove it from the table.
+
+DELETE from books WHERE isbn=0136067256;
+
+
+
+6a) Write a command to make a new table to hold spacecrafts. Information should include id, name, year launched, country of origin, a brief description of the mission, orbiting body, if it is currently operating, and its approximate miles from Earth. In addition to the table creation, provide commands that perform the following operations:
+
+CREATE TABLE spacecraft (
+      id int,
+      name char,
+      launched_year date,
+      country char,
+      mission_description char(1000),
+      orbiting_body char,
+      operational bool,
+      miles_from_earth integer
+  );
+
+6b) Add three non-Earth-orbiting satellites to the table.
+
+INSERT INTO spacecraft VALUES (301, "Soyuz", 1967, Russia, "Three person Earth orbital spacecraft; Early versions were operated by the Soviet Union and later versions by Russia after 1991. As of December 2018 Soyuz has made 139 crewed spaceflights, including two emergency sub-orbital flights, Soyuz 18a and Soyuz MS-10.-wikipedia", "Earth", true, 250,);
+
+INSERT INTO spacecraft VALUES (101, "Mercury", 1961, USA, "United States single-person Earth orbital spacecraft 6 flights (including 2 sub-orbital). Mercury was the United States first crewed spacecraft. On 5 May 1961 Mercury-Redstone 3 carried the first American, Alan Shepard, into space on a sub-orbital flight. On 20 February 1962 Mercury-Atlas 6 carried the first American, John Glenn, into Earth orbit.-wikipedia", "Earth", false, 0,);
+
+INSERT INTO spacecraft VALUES (102, "Mir", 1986, Soviet Union, "Soviet/Russian low Earth orbit modular space station. The first modular space station in history. 28 crews. Mir was visited by 29 Soyuz and 7 Space Shuttle missions. De-orbited 2001.-wikipedia", "Earth", false, 0,);
+
+6c) Remove one of the satellites from the table since it has just crashed into the planet.
+
+DELETE FROM spacecraft WHERE id=102;
+
+6d) Edit another satellite because it is no longer operating and change the value to reflect that.
+
+UPDATE spacecraft SET operational=false WHERE id=301;
+
+
+
+7a) Write a command to create a new table to hold the emails in your inbox. This table should include an id, the subject line, the sender, any additional recipients, the body of the email, the timestamp, whether or not you have read the email, and the id of the email chain it's in.
+
+CREATE TABLE inbox (
+      id int,
+      subject varchar(200),
+      sender contact_email text,
+      cc_bcc contact_email text,
+      body text,
+      timestamp current_timestamp,
+      read bool,
+      id_thread int
+  );
+
+
+Also provide commands that perform the following operations:
+
+7b) Add three new emails to the inbox.
+
+INSERT INTO inbox VALUES (1124, "RE: Have you read this book?", "SallySeashells@Zmail.com", "", "I found this book you might wanna read. It's about bathing cats! Apparently, you CAN bathe cats!!!!", '2001-09-28 03:00:00', true, 9898);
+
+INSERT INTO inbox VALUES (4225, "RE: Wedding Dinner", "MommaDukes@Coldmail.com", "", "Can I bring my dog to the wedding? -Love mom", '2012-09-29 06:00:00', true, 2020);
+
+INSERT INTO inbox VALUES (4226, "RE: "Call me", "TheRealSis@Comcastsucks.com", "", "Mom said she's bringing her dog to my wedding? WTF! Call me", '2012-09-29 06:30:00', false, 2021);
+
+7c) You deleted one of the emails, so write a command to remove the row from the inbox table.
+
+DELETE FROM inbox WHERE id='1124';
+
+7d) You started reading an email but just heard a crash in another room. Mark the email as unread before investigating the crash, so you can come back and read it later.
+
+UPDATE inbox SET read=FALSE WHERE id='4225';

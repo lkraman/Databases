@@ -1,0 +1,134 @@
+1) Write out a generic SELECT statement.
+
+    SELECT <column1, column2, ... *>
+    FROM <table1, table2 ...>
+    <optional: WHERE <condition>>
+
+2) Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
+
+    SFW=Safe for work
+    SFW=So effing what
+
+3) Given this dogs table, write queries to select the following pieces of data:
+
+Intake teams typically guess the breed of shelter dogs, so the breed column may have multiple words (for example, "Labrador Collie mix").
+
+3a) Display the name, gender, and age of all dogs that are part Labrador.
+
+    SELECT name, gender, age
+    FROM dogs
+    WHERE breed LIKE '%labrador%';
+
+
+3b) Display the ids of all dogs that are under 1 year old.
+
+    SELECT id
+    FROM dogs
+    WHERE age < 1;
+3c) Display the name and age of all dogs that are female and over 35lbs.
+
+    SELECT name, age
+    FROM dogs
+    WHERE gender= 'F'
+    AND weight > 35;
+
+3d) Display all of the information about all dogs that are not Shepherd mixes.
+    SELECT *
+    FROM dogs
+    WHERE breed NOT LIKE '%shepherd%';
+
+3e) Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+
+    SELECT id, age, weight, breed
+    FROM dogs
+    WHERE weight > 60
+    OR breed LIKE '%great dane%';
+
+4) Given this cats table, what records are returned from these queries?
+
+4a) SELECT name, adoption_date FROM cats;
+
+    Mushi	2016-03-22T00:00:00.000Z
+    Seashell	null
+    Azul	2016-04-17T00:00:00.000Z
+    Victoire	2016-09-01T00:00:00.000Z
+    Nala	null
+
+4b) SELECT name, age FROM cats;
+
+    Mushi	1
+    Seashell	7
+    Azul	3
+    Victoire	7
+    Nala	1
+
+5) From the cats table, write queries to select the following pieces of data.
+
+5a) Display all the information about all of the available cats.
+
+    SELECT *
+    FROM cats;
+
+    id	name	gender	age	intake_date	adoption_date
+1	Mushi	M	1	2016-01-09T00:00:00.000Z	2016-03-22T00:00:00.000Z
+2	Seashell	F	7	2016-01-09T00:00:00.000Z	null
+3	Azul	M	3	2016-01-11T00:00:00.000Z	2016-04-17T00:00:00.000Z
+4	Victoire	M	7	2016-01-11T00:00:00.000Z	2016-09-01T00:00:00.000Z
+5	Nala	F	1	2016-01-12T00:00:00.000Z	null
+
+5b) Display the name and sex of all cats who are 7 years old.
+
+    SELECT name, gender
+    FROM cats
+    WHERE age > 7;
+
+    No results
+
+5c) Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+
+    SELECT names
+    FROM cats
+
+    Mushi
+    Seashell
+    Azul
+    Victoire
+    Nala
+
+6) List each comparison operator and explain when you would use it. Include a real world example for each.
+If you can’t list these from memory, do these flashcards until you can!
+
+    > :'where age is greater than 15 so you're old enough to drive'
+    < :'where height is less than 3 feet and you no longer can go on the kiddie rides'
+    = :'when your age equals 40 so you start getting mail for AARP'
+    >= :'when you are 55 and older, you can qualify for a 55 and older living community!'
+    <= :'when you are 9 and under, that is the only time in your life you are aged as a single digit'
+    != / <> :'My love for my cat, Sal, is greater than the love I have for a rock, but less than the love I have for my other cat, Syl.'
+    LIKE :'%s%' 'the letter 's' is in both cats' names, Syl and Sal. '
+    BETWEEN :'getting a web development job is my 'between' chaos and freedom'
+    IS DISTINCT FROM :'The tree is distinct from the others because it has a knot the shape of Kentucky'
+    IS TRUE / IS FALSE 'when the taxi has arrived, the statement is true. When the taxi is gone, it is false.'
+    IS NULL 'when the taxi has not arrived nor left, it is null'
+    AND 'It is ideal to cuddle with Syl and Sal.'
+    OR 'I'd prefer to live in Southern United States or the Caribbean.'
+    NOT 'when I enjoy climates that are not wintry'
+
+7) From the cats table, what data is returned from these queries?
+
+7a) SELECT name FROM cats WHERE gender = ‘F’;
+
+    Seashell
+    Nala
+
+7b) SELECT name FROM cats WHERE age <> 3;
+
+    Mushi
+    Seashell
+    Victoire
+    Nala
+
+7c) SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+
+    id
+    3
+    4

@@ -140,6 +140,7 @@ UPDATE spacecraft SET operational=false WHERE id=301;
 
 
 
+
 7a) Write a command to create a new table to hold the emails in your inbox. This table should include an id, the subject line, the sender, any additional recipients, the body of the email, the timestamp, whether or not you have read the email, and the id of the email chain it's in.
 
 CREATE TABLE inbox (

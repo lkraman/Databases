@@ -16,7 +16,7 @@ ________________________________________________________________________________
 
 3) Define primary key and foreign key. Give a real-world example for each.
 
-A primary key is used to uniquely identify a column in one table. The foreign key represents the primary key in another table but it can have more than one column and isn't a special designation. An example of a primary key is my full address. The foreign key could be my street name.
+A primary key is used to uniquely identify a column in one table. The foreign key represents the primary key in another table but it can have more than one column and isn't a special designation. An example of a primary key is a social security number. Until June 2018, two Laura Kramans existed in the United States. Although our social security (SS) numbers are primary keys associated with the SS Agency, there are also foreign keys related to the SS information to connect both tables to, for example, the credit bureau and background check agencies. 
 ____________________________________________________________________________________________
 
 4) Define aliasing.
@@ -25,14 +25,14 @@ ____________________________________________________________________
 5) Change this query so that you are using aliasing:
 
 SELECT professor.name, compensation.salary,
-compensation.vacation_days FROM professor JOIN
+compensation.vacation_days
+FROM professor JOIN
 compensation ON professor.id =
 compensation.professor_id;
 
-SELECT p.name, c.salary,
-c.v._days FROM professor AS p JOIN
-compensation c ON professor.id =
-c.p_id;
+SELECT p.name, c.salary, c.vacation_days
+FROM professor AS p
+JOIN compensation AS c ON p.id = c.professor_id;
 _____________________________________________________________________________________
 6) Why would you use a NATURAL JOIN? Give a real-world example.
 
@@ -178,11 +178,10 @@ DISCLAIMER: This happened by accident while figuring out 8c :)
 
 QUERY:
 SELECT
-first_name,
-last_name
-FROM dogs
-INNER JOIN dog_adoptions ON dog_adoptions.dog_id = dogs.id
-INNER JOIN adopters ON dog_adoptions.adopter_id = adopters.id;
+SELECT adopters.first_name, adopters.last_name
+FROM adopters
+JOIN dog_adoptions ON adopters.id = dog_adoptions.adopter_id
+WHERE dog_adoptions.adopter_id = 3;
 
 ANSWER:
 
